@@ -21,9 +21,9 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "module"
     }],
-    taskLists: [{
+    task: [{
         type: Schema.Types.ObjectId,
-        ref: "taskList"
+        ref: "task"
     }],
     event: [{
         type: Schema.Types.ObjectId,

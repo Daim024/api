@@ -37,6 +37,16 @@ const updateModule = (req, res) => {
     });
 }
 
+const getUserModule = (req, res) => {
+    User.findOne({ username: req.params.id})
+   // User.findOne({ _id: req.body.id})
+    .then( dbUser => {
+        res.status(200).json(dbUser);
+    })
+    .catch( err => {
+        res.status(400).send(err.message);
+    });
+}
 
 const deleteModule = (req, res) => {
     Module.findOneAndDelete({ _id: req.body.id })
@@ -54,4 +64,4 @@ const deleteModule = (req, res) => {
     });
 }
 
-module.exports = { addModule, updateModule, deleteModule }
+module.exports = { addModule, getUserModule, updateModule, deleteModule }

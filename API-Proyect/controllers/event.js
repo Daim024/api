@@ -34,8 +34,7 @@ const getEvent = (req, res) => {
 
 const updateEvent = (req, res) => {
     Event.findOneAndUpdate({ _id: req.body.id }, { title: req.body.title, description: req.body.description,
-                                                   day: req.body.day, month: req.body.month, year: req.body.year, 
-                                                   hour: req.body.hour, minute: req.body.minute})
+                                                   date: req.body.date, time: req.body.time})
     .then( () => {
         Event.findOne({ _id: req.body.id})
         .then( updatedEvent => { 

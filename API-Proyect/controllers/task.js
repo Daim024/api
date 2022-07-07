@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 const User = require('../models/user');
-const TaskList = require('../models/taskList');
 const Task = require('../models/task');
 
 const addTask = (req, res) => {
     Task.create(req.body)
     .then( dbTask => {
-        return TaskList.findOneAndUpdate({ _id: req.body.id }, { $push: { tasks: dbTask._id }}, { new: true});
+        return User.findOneAndUpdate({ _id: req.body.id }, { $push: { task: dbTask._id }}, { new: true});
     })
-    .then( dbTask => {
-        res.status(200).json(dbTask);
+    .then( dbUser => {
+        res.status(200).json(dbUser);
     })
     .catch( err => {
         res.status(400).send(err.message);
@@ -19,12 +18,6 @@ const addTask = (req, res) => {
 const getUserTasks = (req, res) => {
     User.findOne({ username: req.params.id})
    // User.findOne({ _id: req.body.id})
-    .populate({
-        path: 'taskLists',
-        populate: {
-            path: 'tasks'
-        }
-    })
     .then( dbUser => {
         res.status(200).json(dbUser);
     })

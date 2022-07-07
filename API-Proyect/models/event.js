@@ -8,20 +8,11 @@ const EventSchema = new Schema({
     description: {
         type: String
     },
-    day: {
-        type: Number
+    date: {
+        type: String
     },
-    month: {
-        type: Number
-    },
-    year: {
-        type: Number
-    },
-    hour:{
-        type: Number
-    },
-    minute:{
-        type: Number
+    time: {
+        type: String
     },
     event: [{
         type: Schema.Types.ObjectId,

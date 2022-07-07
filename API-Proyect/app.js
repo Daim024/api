@@ -11,7 +11,6 @@ var authRouter = require("./routers/auth");
 var moduleRouter = require("./routers/module");
 var eventRouter = require("./routers/event")
 var noteRouter = require("./routers/note");
-var taskListRouter = require("./routers/taskList");
 var taskRouter = require("./routers/task");
 var securityResponseRouter = require("./routers/securityResponse")
 
@@ -33,7 +32,6 @@ app.use("/security", securityResponseRouter);
 app.use("/modules", moduleRouter);
 app.use("/event", eventRouter);
 app.use("/notes", noteRouter);
-app.use("/lists", taskListRouter);
 app.use("/tasks", taskRouter);
 
 

@@ -1,5 +1,6 @@
 const passport = require("passport");
 const UserModel = require("../models/user");
+const UserId = require("../routers/auth")
 const JWTstrategy = require("passport-jwt").Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
 
@@ -14,7 +15,7 @@ passport.use(
     async (token, done) => {
       try {
         const user = await UserModel.findOne(
-          { _id: token.user._id },
+          { _id: token.user._id},
           "-password"
         );
         return done(null, user);
@@ -24,3 +25,5 @@ passport.use(
     }
   )
 );
+
+//const UserId = req.user;
