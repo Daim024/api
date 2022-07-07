@@ -25,9 +25,9 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "taskList"
     }],
-    events: [{
+    event: [{
         type: Schema.Types.ObjectId,
-        ref: "events"
+        ref: "event"
     }],
     securityResponse: [{
         type: String,

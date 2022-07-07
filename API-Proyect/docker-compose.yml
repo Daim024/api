@@ -9,14 +9,14 @@ services:
       - JWT_SECRET=Awerqw@#$$WER!@#$$!@%ETWEQR@!!asda123
     build: .
     ports: 
-      - "127.0.0.1:3000:3000"
+      - "3000:3000"
     links:
       - mongo
   mongo:
     container_name: mongo
     image: mongo
     ports:
-      - "127.0.0.1:27017:27017"
+      - "27017:27017"
     command:
       - "--logpath"
       - "/var/log/mongodb/mongod.log"
