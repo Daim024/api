@@ -33,7 +33,13 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        ref: "securityResponse",
+        ref: "securityResponse"
+    }],
+    webAQ: [{
+        type: String,
+        required: true,
+        unique: true,
+        ref: "webQA"
     }]
     
 });

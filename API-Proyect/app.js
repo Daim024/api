@@ -12,7 +12,8 @@ var moduleRouter = require("./routers/module");
 var eventRouter = require("./routers/event")
 var noteRouter = require("./routers/note");
 var taskRouter = require("./routers/task");
-var securityResponseRouter = require("./routers/securityResponse")
+var securityResponseRouter = require("./routers/securityResponse");
+var webQARouter = require("./routers/webQA");
 
 
 var app = express();
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(authRouter);
 app.use( passport.authenticate("jwt", { session: false }));
 app.use("/users", userRouter);
+app.use("/webQA", webQARouter);
 app.use("/security", securityResponseRouter);
 app.use("/modules", moduleRouter);
 app.use("/event", eventRouter);

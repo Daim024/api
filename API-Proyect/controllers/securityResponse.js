@@ -15,7 +15,6 @@ const addSecurityResponse = (req, res) => {
     });
 }
 
-
 const getUserSecurityResponse = (req, res) => {
     User.findOne({ username: req.params.id})
    // User.findOne({ _id: req.body.id})

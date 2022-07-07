@@ -25,5 +25,3 @@ passport.use(
     }
   )
 );
-
-//const UserId = req.user;

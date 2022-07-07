@@ -16,14 +16,8 @@ const addEvent = (req, res) => {
 }
 
 const getEvent = (req, res) => {
-    Event.findOne({ username: req.params.id})
+    User.findOne({ username: req.params.id})
     //User.findOne({ username: req.body.username})
-    .populate({
-        path: 'event',
-        populate: {
-            path: 'event'
-        }
-    })
     .then( dbUser => {
         res.status(200).json(dbUser);
     })
