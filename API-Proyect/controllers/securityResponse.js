@@ -1,7 +1,9 @@
+//Importing dependency
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const SecurityResponse = require('../models/securityResponse');
 
+//Function to add a security question, with the answer parameter and prints a unique id for the answer
 const addSecurityResponse = (req, res) => {
     SecurityResponse.create(req.body)
     .then( dbSecurityResponse => {
@@ -15,6 +17,8 @@ const addSecurityResponse = (req, res) => {
     });
 }
 
+//Function to display the saved data
+//And print the id of the created security response
 const getUserSecurityResponse = (req, res) => {
     User.findOne({ username: req.params.id})
    // User.findOne({ _id: req.body.id})
@@ -26,6 +30,8 @@ const getUserSecurityResponse = (req, res) => {
     });
 }
 
+//Function to be able to update the security question, and when updating it, an alert appears that was 
+//successfully updated
 const updateSecurityResponse = (req, res) => {
     SecurityResponse.findOneAndUpdate({ _id: req.body.id }, { description: req.body.description })
     .then( () => {
@@ -46,7 +52,8 @@ const updateSecurityResponse = (req, res) => {
     });
 }
 
-
+//Function to delete the security question, deleting it with 
+//the unique id of the security answer
 const deleteSecurityResponse = (req, res) => {
     SecurityResponse.findOneAndDelete({ _id: req.body.id })
     .then( deletedSecurityResponse => {
@@ -63,5 +70,5 @@ const deleteSecurityResponse = (req, res) => {
     });
 }
 
-
+//To export the functions
 module.exports = { addSecurityResponse, getUserSecurityResponse, updateSecurityResponse, deleteSecurityResponse}

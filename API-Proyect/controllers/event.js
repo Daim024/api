@@ -1,7 +1,10 @@
+//Importing dependency
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const Event = require('../models/event');
 
+//Adding function to add an event where the title, description, date and time parameters are entered.
+//Where what will print will be an event with a unique id
 const addEvent = (req, res) => {
     Event.create(req.body)
     .then( dbEvent => {
@@ -15,6 +18,8 @@ const addEvent = (req, res) => {
     });
 }
 
+//Function to display the saved data
+//And print the id of the created events
 const getEvent = (req, res) => {
     User.findOne({ username: req.params.id})
     //User.findOne({ username: req.body.username})
@@ -26,6 +31,8 @@ const getEvent = (req, res) => {
     });
 }
 
+//Function to update event data, with the parameters that you want to change and print that the event was 
+//successfully updated
 const updateEvent = (req, res) => {
     Event.findOneAndUpdate({ _id: req.body.id }, { title: req.body.title, description: req.body.description,
                                                    date: req.body.date, time: req.body.time})
@@ -48,7 +55,8 @@ const updateEvent = (req, res) => {
 }
 
 
-
+//Function to delete an event where the id of the event to be deleted 
+//is entered, and it prints a message that it was successfully deleted
 const deleteEvent = (req, res) => {
     Event.findOneAndDelete({ _id: req.body.id })
     .then( deletedEvent => {
@@ -65,4 +73,5 @@ const deleteEvent = (req, res) => {
     });
 }
 
+//To export the functions
 module.exports = { addEvent, getEvent, updateEvent, deleteEvent }

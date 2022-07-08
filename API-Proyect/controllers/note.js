@@ -1,8 +1,10 @@
+//Importing dependency
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const Module = require('../models/module');
 const Note = require('../models/note');
 
+//Adding function to add a note to a specific module, entering a note title and description, and referencing the module
 const addNote = (req, res) => {
     Note.create(req.body)
     .then( dbNote => {
@@ -16,6 +18,8 @@ const addNote = (req, res) => {
     })
 }
 
+//Function to display the saved data
+//And print the id of the created note
 const getUserNotes = (req, res) => {
     User.findOne({ username: req.params.id})
     //User.findOne({ username: req.body.username})
@@ -33,7 +37,8 @@ const getUserNotes = (req, res) => {
     });
 }
 
-
+//Adding a function to update a specific note by entering the parameters that you want to change, and when doing 
+//so, it prints a message that the note was updated
 const updateNote = (req, res) => {
     Note.findOneAndUpdate({ _id: req.body.id }, { title: req.body.title, description: req.body.description })
     .then( () => {
@@ -54,7 +59,7 @@ const updateNote = (req, res) => {
     })
 }
 
-
+//Function to delete a note where the id of the specific note is entered
 const deleteNote = (req, res) => {
     Note.findOneAndDelete({ _id: req.body.id })
     .then( deletedNote => {
@@ -73,4 +78,5 @@ const deleteNote = (req, res) => {
     })
 }
 
+//To export the functions
 module.exports = { addNote, getUserNotes, updateNote, deleteNote}

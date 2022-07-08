@@ -1,9 +1,11 @@
+//Importing dependency
 const passport = require("passport");
 const UserModel = require("../models/user");
 const UserId = require("../routers/auth")
 const JWTstrategy = require("passport-jwt").Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
 
+//Start collecting data to do the function to create the token
 passport.use(
   new JWTstrategy(
     {

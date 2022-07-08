@@ -1,7 +1,9 @@
+//Importing dependency
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const WebQA = require('../models/webQA');
 
+//Adding function to add question parameters and its answer for the web
 const addWebQA = (req, res) => {
     WebQA.create(req.body)
     .then( dbWebQA => {
@@ -15,6 +17,8 @@ const addWebQA = (req, res) => {
     });
 }
 
+//Adding function to be able to observe the data that was saved from the 
+//question and answer string
 const getUserWebQA = (req, res) => {
     User.findOne({ username: req.params.id})
    // User.findOne({ _id: req.body.id})
@@ -26,6 +30,7 @@ const getUserWebQA = (req, res) => {
     });
 }
 
+//Function to update questions and answer
 const updateWebQA = (req, res) => {
     WebQA.findOneAndUpdate({ _id: req.body.id }, { title: req.body.title, description: req.body.description})
     .then( () => {
@@ -46,6 +51,7 @@ const updateWebQA = (req, res) => {
     });
 }
 
+//Function to remove the parameters of the question and answer
 const deleteWebQA = (req, res) => {
     WebQA.findOneAndDelete({ _id: req.body.id })
     .then( deletedWebQA => {
@@ -62,4 +68,5 @@ const deleteWebQA = (req, res) => {
     });
 }
 
+//To export the functions
 module.exports = { addWebQA, getUserWebQA, updateWebQA, deleteWebQA }

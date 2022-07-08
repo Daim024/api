@@ -1,3 +1,4 @@
+//Importing dependency
 const mongoose = require('mongoose');
 const { findOneAndReplace } = require('../models/user');
 const User = require('../models/user');
@@ -34,6 +35,7 @@ const updateUser = (req, res) => {
     });
 }
 
+//Function to delete a user by entering the parameter of his id
 const deleteUser = (req, res) => {
     User.findOneAndDelete({ _id: req.body.id })
     .then( deletedUser => {
@@ -52,4 +54,5 @@ const deleteUser = (req, res) => {
     });
 }
 
+//To export the functions
 module.exports = { addUser, updateUser, deleteUser };

@@ -1,7 +1,9 @@
+//Importing dependency
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const Task = require('../models/task');
 
+//Adding function to add a task by entering the description parameter, and printing a unique id for each task
 const addTask = (req, res) => {
     Task.create(req.body)
     .then( dbTask => {
@@ -15,6 +17,8 @@ const addTask = (req, res) => {
     })
 }
 
+////Function to display the saved data
+//And print the id of the created task
 const getUserTasks = (req, res) => {
     User.findOne({ username: req.params.id})
    // User.findOne({ _id: req.body.id})
@@ -26,7 +30,7 @@ const getUserTasks = (req, res) => {
     });
 }
 
-
+//Adding a function to update the description parameter and at the end it prints that it was updated correctly
 const updateTask = (req, res) => {
     Task.findOneAndUpdate({ _id: req.body.id }, { title: req.body.title, status: req.body.status })
     .then( () => {
@@ -47,7 +51,8 @@ const updateTask = (req, res) => {
     })
 }
 
-
+//Function to delete the task by entering the unique id of the 
+//task and prints with a was deleted correctly
 const deleteTask = (req, res) => {
     Task.findOneAndDelete({ _id: req.body.id })
     .then( deletedTask => {
@@ -66,4 +71,5 @@ const deleteTask = (req, res) => {
     })
 }
 
+//To export the functions
 module.exports = { addTask, getUserTasks,  updateTask, deleteTask}
