@@ -15,6 +15,7 @@ var taskRouter = require("./routers/task");
 var securityResponseRouter = require("./routers/securityResponse");
 var webQARouter = require("./routers/webQA");
 const cors = require('cors');
+const whiteList = ['http://localhost:3000/login']
 
 
 var app = express();
@@ -25,6 +26,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cors({origin:[]}))
+
 
 
 app.use(authRouter);
